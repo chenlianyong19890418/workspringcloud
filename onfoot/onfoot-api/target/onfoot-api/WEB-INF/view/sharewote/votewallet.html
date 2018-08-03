@@ -1,0 +1,67 @@
+           <#include "../../base/base.html"/>
+           <div id="wechatyindao" style="display: none;"><img src="img/yindao.png"></div>
+            <div class="one">
+                <div class="wallet">
+                    <p class="voteStatusTitle"><i class="iconVoteSuccess"><img src="img/icon-success@3x.png"></i>投票成功</p>
+                    <p class="voteNum">当前<span class="num">${votes}</span>票</p>
+                    <#if hasReceived ==0>
+                    <p class="wallet-txt">您有一个红包待领取</p>
+                    <div class="walletPanel">
+                        <a  class="wallet-box">
+                        </a>
+                    </div>
+                    <#else>
+                     <div class="walletPanel">
+                        <p swiper-animate-effect="bounceAuto" swiper-animate-duration="1.5s" swiper-animate-delay="0.2s"  class="wallet-prtty-img ani"><img src="img/effect@3x.png"></p>
+                        <p class="wallet-open-box"></p>
+                        <a class="btn-haveWallet" href="/${msUrl}/annual/download/2017" id="openApp"><img src="img/button-get@3x.png"></a>
+                    </div>
+                    </#if>
+                    
+                    <div class="btn-group outside">
+                        <a href="/${msUrl}/annual/wxranking/2017?uid=${uid}" class="btn-check"><img src="img/button-list@3x.png"></a>
+                    </div>
+
+                </div>
+            </div>
+            <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="2s"
+                 swiper-animate-delay="0.2s" src="img/bg-house@3x.png" alt="">
+            <div class="logo">
+                <img class="ani" swiper-animate-effect="pulse" swiper-animate-duration="2s" swiper-animate-delay="0.2s"
+                     src="img/icon-logo@3x.png"
+                     alt="">
+            </div>
+            <#include "../../base/foot.html"/>
+<script>
+    $(function(){
+    	sessionStorage.setItem("need-refresh", true);
+ 	   $(".wallet-box").on("click",function(){
+ 			  $.ajax({
+ 					url:"../annual/receiveRegistRedPacket/2017",
+ 					data:{uid:'${uid}'},
+ 					dataType:'json',
+ 					type:"post",
+ 					success:function(e){
+ 						if(e.retcode=='0000'){
+ 							$(".wallet-txt").text("恭喜您获得红包奖励");
+ 							$(".wallet-box").remove();
+ 							var htm = ' <p swiper-animate-effect="bounceAuto" swiper-animate-duration="1.5s" swiper-animate-delay="0.2s"  class="wallet-prtty-img ani"><img src="img/effect@3x.png"></p>'
+ 		                        +'<p class="wallet-open-box"></p>'
+ 		                        +' <a class="btn-haveWallet" href="/${msUrl}/annual/download/2017" id="openApp"><img src="img/button-get@3x.png"></a>';
+ 						$(".walletPanel").html(htm);
+ 						}else if(e.retcode=='0040'){
+ 							$(".alert-box").text(e.retmessage);
+ 							$(".alert-box").show();
+ 						}else{
+ 							$(".alert-box").text("系统繁忙，请联系客服");
+ 							$(".alert-box").show();
+ 						}
+ 					},
+ 					error:function(e){
+ 						alert("系统繁忙，请联系客服");	
+ 					}
+ 				})
+ 		  });
+    });
+    
+</script>

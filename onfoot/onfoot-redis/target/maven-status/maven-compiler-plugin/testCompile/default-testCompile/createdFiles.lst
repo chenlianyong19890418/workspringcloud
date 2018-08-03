@@ -1,0 +1,6 @@
+com\dlsmartercity\annualaccount\redis\JedisTest.class
+com\dlsmartercity\annualaccount\redis\lock\Consumer.class
+com\dlsmartercity\annualaccount\redis\lock\Productor.class
+com\dlsmartercity\annualaccount\redis\lock\RedisLockTest.class
+com\dlsmartercity\annualaccount\redis\lock\Account.class
+com\dlsmartercity\annualaccount\redis\repositories\PhoneNoPasswordBackInfoRepositoryTest.class

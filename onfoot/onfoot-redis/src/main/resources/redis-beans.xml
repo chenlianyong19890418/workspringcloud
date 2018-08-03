@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:property-placeholder location="classpath:redisconfig.properties" ignore-unresolvable="true"/>
+	
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig" p:maxTotal="${com.dlsmartercity.annualaccount.redis.maxTotal}" p:maxIdle="${com.dlsmartercity.annualaccount.redis.maxIdle}" p:maxWaitMillis="${com.dlsmartercity.annualaccount.redis.maxWaitMillis}" p:testOnBorrow="${com.dlsmartercity.annualaccount.redis.testOnBorrow}"/>
+	
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" c:_-ref="jedisPoolConfig" p:hostName="${com.dlsmartercity.annualaccount.redis.hostName}" p:port="${com.dlsmartercity.annualaccount.redis.port}" p:password="${com.dlsmartercity.annualaccount.redis.password}" p:database="${com.dlsmartercity.annualaccount.redis.database}" p:usePool="true"/>
+	
+	<bean id="stringRedisSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+	
+	<bean id="jdkSerializationRedisSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+	
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" p:connectionFactory-ref="jedisConnectionFactory" p:enableDefaultSerializer="false" p:keySerializer-ref="stringRedisSerializer" p:hashKeySerializer-ref="stringRedisSerializer" p:valueSerializer-ref="jdkSerializationRedisSerializer" p:hashValueSerializer-ref="jdkSerializationRedisSerializer"/>
+	
+	<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager" c:_-ref="redisTemplate" p:transactionAware="true" p:usePrefix="true" p:loadRemoteCachesOnStartup="true" p:defaultExpiration="1800"/>
+	
+	<cache:annotation-driven cache-manager="cacheManager" mode="aspectj"/>
+	
+	<bean class="com.dlsmartercity.annualaccount.redis.RedisConfig"/>
+	
+</beans>

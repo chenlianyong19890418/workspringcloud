@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		
+	<mvc:resources mapping="/source/**" location="/source/" />
+	<mvc:resources mapping="/annual/othersAnnualData/2017/*.txt" location="/source/" />
+	<mvc:resources mapping="/*.txt" location="/source/" />
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/*.txt"/>
+			<bean class="com.dlsmartercity.annualaccount.api.interceptor.PerformLogInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/*.txt"/>
+			<bean class="com.dlsmartercity.annualaccount.core.context.ActionContextHandlerInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/source/**"/>
+			<mvc:exclude-mapping path="/*.txt"/>
+			
+			<!-- <mvc:exclude-mapping path="/annual/othersAnnualData/2017/**"/>
+			<mvc:exclude-mapping path="/annual/regist/2017/2017/**"/>
+			<mvc:exclude-mapping path="/oldannual/test/2017/**"/> -->
+			
+			<bean class="com.dlsmartercity.annualaccount.api.interceptor.OpenidHandlerInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	 
+	<context:property-placeholder location="classpath:appconfig.properties,classpath:urls.properties" ignore-unresolvable="true"/>
+
+
+	<!-- 指定自己定义的validator -->
+	<mvc:annotation-driven validator="validator" />
+
+	<!-- 以下 validator ConversionService 在使用 mvc:annotation-driven 会 自动注册 -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+
+	<!-- 国际化的消息资源文件（本系统中主要用于显示/错误消息定制） -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- 在web环境中一定要定位到classpath 否则默认到当前web应用下找 -->
+				<value>classpath:validationMessages</value>
+				<value>classpath:org/hibernate/validator/ValidationMessages</value>
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="cacheSeconds" value="60" />
+	</bean>  
+ 
+	
+	
+	<mvc:annotation-driven >  
+    <!-- 处理responseBody 里面日期类型 -->  
+        <mvc:message-converters>  
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+                <property name="objectMapper">  
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">  
+                        <property name="dateFormat">  
+                            <bean class="java.text.SimpleDateFormat">  
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />  
+                            </bean>  
+                        </property>
+                        
+                        <property name="serializationInclusion">
+	                        <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+	                    </property>
+                    </bean>  
+                </property>  
+            </bean>  
+        </mvc:message-converters>  
+    </mvc:annotation-driven>
+	
+	<bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
+		<property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+		<property name="charset" value="UTF-8"/>
+		<property name="serializerFeatures" value="#{T(com.alibaba.fastjson.serializer.SerializerFeature).WriteMapNullValue},#{T(com.alibaba.fastjson.serializer.SerializerFeature).WriteNullStringAsEmpty},#{T(com.alibaba.fastjson.serializer.SerializerFeature).WriteNullListAsEmpty}"/>
+	</bean>
+	
+	<bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
+		<property name="fastJsonConfig" ref="fastJsonConfig"/>
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="contentNegotiationManager">
+			<bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+				<property name="defaultContentType" value="application/json" />
+				<property name="ignoreAcceptHeader" value="true" />
+				<property name="favorPathExtension" value="false" />
+				<property name="favorParameter" value="true" />
+				<property name="parameterName" value="content" />
+				<property name="mediaTypes">
+					<map>
+						<entry key="html" value="text/html" />
+						<entry key="json" value="application/json" />
+					</map>
+				</property>
+			</bean>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean class="com.alibaba.fastjson.support.spring.FastJsonJsonView">
+					<property name="renderedAttributes" value="response" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		<property name="maxUploadSize" value="9000000"/> 
+	</bean> 
+	
+	<bean id="passedTimeDescModel" class="com.dlsmartercity.annualaccount.api.freemarker.template.PassedTimeDescModel"/>
+
+      <bean id="freemarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/view/" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="preferFileSystemAccess" value="false"/>
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="imgUrl" value="${com.dlsmartercity.annualaccount.app.urls.config.imgUrl}"/>
+				<!-- <entry key="officialportraitUrl" value="${com.dlsmartercity.annualaccount.app.urls.config.officialportrait.imgUrl}"/>
+				<entry key="passedTimeDesc" value-ref="passedTimeDescModel"/> -->
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">10</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="number_format">#.##</prop>
+				<prop key="classic_compatible">true</prop>
+			</props>
+		</property>
+	</bean> 
+
+	  <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="order" value="10" />
+		<property name="viewClass" value="com.dlsmartercity.annualaccount.core.freemarker.view.FreeMarkerView" />
+		<property name="suffix" value=".html" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="exposeSessionAttributes" value="true" />
+		<property name="requestContextAttribute" value="request" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="cache" value="true" />
+	</bean> 
+	
+	<util:properties id="captchaProperties">
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_TEXTPRODUCER_CHAR_LENGTH}">4</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_IMAGE_WIDTH}">400</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_IMAGE_HEIGHT}">100</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_BACKGROUND_CLR_FROM}">WHITE</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_BACKGROUND_CLR_TO}">WHITE</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_BORDER}">no</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_TEXTPRODUCER_FONT_SIZE}">80</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_NOISE_IMPL}">com.google.code.kaptcha.impl.NoNoise</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_OBSCURIFICATOR_IMPL}">com.google.code.kaptcha.impl.NoGimpy</prop>
+		<prop key="#{T(com.google.code.kaptcha.Constants).KAPTCHA_TEXTPRODUCER_CHAR_SPACE}">12</prop>
+	</util:properties>
+
+	
+
+	<bean id="captchaConfig" class="com.google.code.kaptcha.util.Config" c:_-ref="captchaProperties"/>
+	
+	<bean class="com.dlsmartercity.annualaccount.api.aspect.TokenAspect"/>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<context:component-scan base-package="com.dlsmartercity.annualaccount.api.controller"/>
+	
+</beans>

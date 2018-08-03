@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dlsmartercity.annualaccount.dao.mapper.single.SysErrorMapper">
+  <resultMap id="BaseResultMap" type="com.dlsmartercity.annualaccount.dto.single.SysError">
+    <id column="SYS_ERROR_id" jdbcType="INTEGER" property="id" />
+    <result column="SYS_ERROR_error_type" jdbcType="VARCHAR" property="errorType" />
+    <result column="SYS_ERROR_error_code" jdbcType="VARCHAR" property="errorCode" />
+    <result column="SYS_ERROR_error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="SYS_ERROR_create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SYS_ERROR.id as SYS_ERROR_id, SYS_ERROR.error_type as SYS_ERROR_error_type, SYS_ERROR.error_code as SYS_ERROR_error_code, 
+    SYS_ERROR.error_msg as SYS_ERROR_error_msg, SYS_ERROR.create_date as SYS_ERROR_create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_error SYS_ERROR
+    where SYS_ERROR.id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_error
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dlsmartercity.annualaccount.dto.single.SysError">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_error (error_type, error_code, error_msg, 
+      create_date)
+    values (#{errorType,jdbcType=VARCHAR}, #{errorCode,jdbcType=VARCHAR}, #{errorMsg,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dlsmartercity.annualaccount.dto.single.SysError">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_error
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="errorType != null">
+        error_type,
+      </if>
+      <if test="errorCode != null">
+        error_code,
+      </if>
+      <if test="errorMsg != null">
+        error_msg,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="errorType != null">
+        #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null">
+        #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dlsmartercity.annualaccount.dto.single.SysError">
+    update sys_error
+    <set>
+      <if test="errorType != null">
+        error_type = #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null">
+        error_code = #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        error_msg = #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dlsmartercity.annualaccount.dto.single.SysError">
+    update sys_error
+    set error_type = #{errorType,jdbcType=VARCHAR},
+      error_code = #{errorCode,jdbcType=VARCHAR},
+      error_msg = #{errorMsg,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

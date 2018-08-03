@@ -1,0 +1,23 @@
+       <#include "../../base/base.html"/>
+            <div class="one fullWidth">
+                <div class="ranking">
+                        <p class="rankTitle">益拍年度人气评选</p>
+                    <div class="rankList">
+                    	  <#list data.rankingList as ranks>
+                        <div class="rankItem">
+                            <p class="rankNum">${ranks.ranking}</p>
+                            <p class="rankName">${ranks.uname}</p>
+                            <p class="rankCodeName">${ranks.honorary}</p>
+                            <p class="rankInfo">${ranks.votesNum}票</p>
+                        </div>
+                        </#list>  
+                    </div>
+                    <p class="rankTips">投票时间截止到2018年2月22日23时59分59秒</p>
+                    <p class="rankTips">票数每两分钟更新一次</p>
+                <div class="listRule">
+                    <img src="activity/img/list-rule@3x.png">
+                    <p class="ruleTips">*本活动最终解释权归益拍所有</p>
+                </div>
+                </div>
+            </div>
+<#include "../../base/foot.html"/>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	
+	<properties resource="jdbc.properties"/>
+
+	<context id="MySqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
+	
+		<property name="mergeable" value="false"/>
+	
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+			<property name="suppressJavaInterface" value="false"/>
+		</plugin>
+		
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+		
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
+		
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}"
+			password="${jdbc.password}"></jdbcConnection>
+			
+		<!-- <javaTypeResolver> <property name="forceBigDecimals" value="false" 
+			/> </javaTypeResolver> -->
+		
+		<javaModelGenerator targetPackage="com.dlsmartercity.annualaccount.dto.single" targetProject="src/main/java">
+			<property name="enableSubPackages" value="false" />
+			<property name="rootClass" value="com.dlsmartercity.annualaccount.core.dto.BaseDto" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.dlsmartercity.annualaccount.dao.mapper.single" targetProject="src/main/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.dlsmartercity.annualaccount.dao.mapper.single" targetProject="src/main/java">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+<!-- 
+		<table tableName="ba_app_version" alias="BA_APP_VERSION" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+		</table> -->
+		<!-- 
+		<table tableName="ba_task_area" alias="BA_TASK_AREA" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="aid" sqlStatement="MySql" identity="true" type="post"/>
+		</table>
+		
+		<table tableName="bu_user" alias="BU_USER" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="uid" sqlStatement="MySql" identity="true" type="post"/>
+		</table>
+		
+		
+		<table tableName="map_dl_region_info" alias="MAP_DL_REGION_INFO" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="SmID" sqlStatement="MySql" identity="true" type="post"/>
+		</table>
+		
+		
+		<table tableName="bu_photo_group" alias="BU_PHOTO_GROUP" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="pgid" sqlStatement="MySql" identity="true" type="post"/>
+		</table>
+		
+		<table tableName="sys_bigdata" alias="SYS_BIGDATA" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+		</table>
+		
+		<table tableName="zhcs_case" alias="ZHCS_CASE" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+		</table>
+		
+		<table tableName="zhcs_case_img" alias="ZHCS_CASE_IMG" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+		</table> -->
+		
+		<table tableName="third_year_acti_bind_info" alias="THIRD_YEAR_ACTI_BIND_INFO" 
+			enableInsert="true" enableSelectByPrimaryKey="true"
+			enableSelectByExample="false" enableUpdateByPrimaryKey="true"
+			enableDeleteByPrimaryKey="true" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="thid" sqlStatement="MySql" identity="true" type="post"/>
+		</table>
+		
+	</context>
+</generatorConfiguration>

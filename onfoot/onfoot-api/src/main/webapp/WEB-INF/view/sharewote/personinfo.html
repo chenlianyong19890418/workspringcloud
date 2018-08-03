@@ -1,0 +1,105 @@
+<#include "../../base/base.html"/>
+            <div class="one">
+                <div class="voteInfo">
+                    <div class="voteInfoPanel">
+                        <i class="iconVoteImg"><img src="img/effect-2@3x.png"> </i>
+                        <p class="pic"><img src="${data.hurl}"></p>
+                        <p class="name">${data.uname}</p>
+                        <p class="codeName">${data.honorary}</p>
+                        <div class="dataType">
+                            <div class="dataItem">
+                                <p class="num">${data.reportCnt}</p>
+                                <p class="til">上报案件</p>
+                            </div>
+                            <div class="dataItem">
+                                <p class="num">${data.caseRate}</p>
+                                <p class="til">立案率</p>
+                            </div>
+                            <div class="dataItem">
+                                <p class="num">${data.finashTaskCnt}</p>
+                                <p class="til">完成任务</p>
+                            </div>
+                        </div>
+                         <#if data.isEffective==0>
+	                        <div class="btn-group">
+	                            <a id="vote" class="btn-two"><img src="img/button-vote2@3x.png"></a>
+	                            <a href="/${msUrl}/annual/rule/2017" class="btn-two"><img src="img/button-rule@3x.png"></a>
+	                        </div>
+	                        <#if data.hasVoted==1>
+	                        <p class="voteTips">(今天剩余0票，投票后可领取红包)</p>
+	                        <#else>
+	                        <p class="voteTips">(今天剩余1票，投票后可领取红包)</p>
+	                        </#if>
+	                    </div>
+		                    <div class="btn-group outside">
+		                        <a href="/${msUrl}/annual/download/2017" class="btn-check"><img src="img/button-self@3x.png"></a>
+		                    </div>
+		                    <#else>
+		                    <div class="btn-group">
+                            	<a href="/${msUrl}/annual/download/2017" class="btn-check"><img src="img/button-self@3x.png"></a>
+                       		</div>
+                     	</div>
+                       
+                         </#if>
+                    <div class="voteInfoBottomText">
+                        <p>益拍是一款专注于改善城市环境的手机APP,随时随地随手拍摄，打造新型城居生活。</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="2s"
+                 swiper-animate-delay="0.2s" src="img/bg-house@3x.png" alt="">
+            <div class="logo">
+                <img class="ani" swiper-animate-effect="pulse" swiper-animate-duration="2s" swiper-animate-delay="0.2s"
+                     src="img/icon-logo@3x.png"
+                     alt="">
+            </div>
+  <#include "../../base/foot.html"/>
+  <script>
+    msUrl = "${msUrl}";
+	var urls= {
+			'msUrl':msUrl,
+			'fileServerUrl':'https://file.dlsmartercity.com/img/'
+		}
+  $(function(){
+	  var needRefresh = sessionStorage.getItem("need-refresh");
+	  if(needRefresh){
+	      sessionStorage.removeItem("need-refresh");
+	      location.reload();
+	  }
+	  $(".wallet-box").on("click","#openApp",function(){
+			window.location.href=urls['msUrl']+"/annual/download/2017"; 
+		});
+	  $("#vote").on("click",function(){
+		  $.ajax({
+				url:"../annual/vote/2017",
+				data:{uid:'${data.uid}'},
+				dataType:'json',
+				type:"post",
+				success:function(e){
+					if(e.retcode=='0000'){
+						$(".alert-box").text("投票成功");
+							window.location.href="../annual/regist/2017?uid=${data.uid}"
+					}else if(e.retcode=='0036'){
+						$(".alert-box").text(e.retmessage);
+						 setTimeout(function(){$(".alert-box").hide();}, 1000);
+					}else if(e.retcode=='0041'){
+						$(".alert-box").text(e.retmessage);
+					}else if(e.retcode=='0042'){
+						$(".alert-box").text(e.retmessage);
+					}else{
+						$(".alert-box").text("系统繁忙，请联系客服");
+					}
+					$(".alert-box").show();
+					 setTimeout(function(){$(".alert-box").hide();}, 1000);
+				},
+				error:function(e){
+					$(".alert-box").text("系统繁忙，请联系客服");
+					$(".alert-box").show();
+					setTimeout(function(){$(".alert-box").hide();}, 1000);
+				}
+			})
+	  });
+  });
+  </script>

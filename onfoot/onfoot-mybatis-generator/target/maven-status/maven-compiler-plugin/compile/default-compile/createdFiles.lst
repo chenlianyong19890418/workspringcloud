@@ -1,0 +1,7 @@
+com\dlsmartercity\annualaccount\dto\single\SysAccountLog.class
+com\dlsmartercity\annualaccount\dto\single\SysAccount.class
+com\dlsmartercity\annualaccount\dto\single\BuMoneyLog.class
+com\dlsmartercity\annualaccount\dto\single\SysCensus.class
+com\dlsmartercity\annualaccount\dto\single\BuUserAccountLog.class
+com\dlsmartercity\annualaccount\dto\single\BuMessage.class
+com\dlsmartercity\annualaccount\dto\single\BuUser.class

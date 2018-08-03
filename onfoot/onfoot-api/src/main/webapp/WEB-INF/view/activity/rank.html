@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>2017年度盘点</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<base href="/${msUrl}/source/">
+    <!-- Link Swiper's CSS -->
+    <!-- <link rel="stylesheet" href="activity/css/swiper.min.css"> -->
+    <link rel="stylesheet" href="activity/css/slide.css">
+    <link rel="stylesheet" href="activity/css/rank.css">
+</head>
+<script>
+    	sessionStorage.setItem("need-location", true);
+    </script>
+<body>
+<!-- Swiper -->
+<input type="hidden" id="uid" value="${uid}">
+    <div class="container">
+        <div class="one fullWidth">
+            <div class="ranking">
+                    <p class="rankTitle">益拍年度人气评选</p>
+                <div class="rankList" id="rankList">
+                </div>
+
+                <div class="rankList" id="seltRank">
+                </div>
+
+                <p class="rankTips">投票时间截止到2018年2月22日23时59分59秒</p>
+                <p class="rankTips">票数每两分钟更新一次</p>
+
+                <div class="listRule">
+                    <img src="activity/img/list-rule@3x.png">
+                    <p class="ruleTips">* 本活动最终解释权归益拍所有</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Swiper JS -->
+<script src="activity/js/swiper.min.js"></script>
+<script src="activity/js/jquery.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+//<!--     $(window).on('resize.rem', function() {
+//        var rem = 7.5;
+//        $('html').css('font-size', $(window).width() / rem);
+//    }).trigger('resize.rem');-->
+
+    $(function (params) {
+        function getData(url, paramsObj) {
+            if (!url) {
+                return;
+            } else {
+                return $.getJSON({
+                    url: url,
+                    data: paramsObj || {},
+                    async: false,
+                    dataType: 'json'
+                }).responseJSON;
+            }
+        };
+        var dataList = getData("${ranking}?uid="+$("#uid").val()+"&viewType=1").data;
+        console.log(dataList)
+
+       dataList.rankingList.forEach(function (value, index, array) {
+            $("#rankList").append('<div class="rankItem"><p class= "rankNum" > ' + value.ranking + '</p ><p class="rankName">' + value.uname + '</p><p class="rankCodeName">' + value.honorary + '</p><p class="rankInfo">' + value.votesNum + '</p></div >');
+
+        });
+        $("#seltRank").append('<div class="rankItem Self"><p class= "rankNum" > '+ dataList.summary.ranking +'</p ><p class="rankName">'+ dataList.summary.uname+'</p><p class="rankCodeName">'+ dataList.summary.honorary+'</p><p class="rankInfo">'+ dataList.summary.votesNum+'</p></div >');
+
+    });
+</script>
+</body>
+</html>

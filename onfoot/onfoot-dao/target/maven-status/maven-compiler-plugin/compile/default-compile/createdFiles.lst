@@ -1,0 +1,6 @@
+com\dlsmartercity\annualaccount\datasource\DynamicDataSourceGlobal.class
+com\dlsmartercity\annualaccount\dao\mapper\single\SysErrorMapper.class
+com\dlsmartercity\annualaccount\datasource\DynamicDataSourceHolder.class
+com\dlsmartercity\annualaccount\datasource\DataSource.class
+com\dlsmartercity\annualaccount\datasource\DynamicDataSourceAspect.class
+com\dlsmartercity\annualaccount\datasource\DynamicDataSource.class

@@ -1,0 +1,6 @@
+D:\onfoot\onfoot-redis\src\test\java\com\dlsmartercity\annualaccount\redis\repositories\PhoneNoPasswordBackInfoRepositoryTest.java
+D:\onfoot\onfoot-redis\src\test\java\com\dlsmartercity\annualaccount\redis\lock\Account.java
+D:\onfoot\onfoot-redis\src\test\java\com\dlsmartercity\annualaccount\redis\lock\Productor.java
+D:\onfoot\onfoot-redis\src\test\java\com\dlsmartercity\annualaccount\redis\lock\RedisLockTest.java
+D:\onfoot\onfoot-redis\src\test\java\com\dlsmartercity\annualaccount\redis\lock\Consumer.java
+D:\onfoot\onfoot-redis\src\test\java\com\dlsmartercity\annualaccount\redis\JedisTest.java

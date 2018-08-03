@@ -1,0 +1,63 @@
+       <#include "../../base/base.html"/>
+            <div id="wechatyindao" style="display: none"><img src="img/yindao.png"></div>
+ </div>
+    </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script src="js/jquery.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+	
+    // 对浏览器的UserAgent进行正则匹配，不含有微信独有标识的则为其他浏览器
+    var useragent = navigator.userAgent;
+    if (useragent.match(/MicroMessenger/i) != 'MicroMessenger') {
+            if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i))
+            {
+                
+                /* window.setTimeout(function() {
+                    window.location.href = "https://itunes.apple.com/cn/app/id1119968831";
+                }, 2000)
+                window.location.href = "qmzhhchsh://";//ios app协议 */
+            	var hasApp = true, t = 1000;
+				setTimeout(
+						function() { //没有安装APP则跳转至app store 下载，延时时间设置为2秒
+							if (!hasApp)
+								window.location.href = "https://itunes.apple.com/cn/app/id1119968831";//ios下载
+						}, 2000);
+				var t1 = Date.now();
+				 window.location.href = "qmzhhchsh://";//ios app协议 */
+				/* window.location.href = "window.location.href = "qmzhhchsh://";//ios app协议 */
+				setTimeout(function() { //t的时间就是出发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
+					var t2 = Date.now();
+					hasApp = !(!t1 || t2 - t1 < t + 150);
+				}, t);
+            }
+            if(navigator.userAgent.match(/android/i))
+            {
+            	
+				var hasApp = true, t = 1000;
+				setTimeout(
+						function() { //没有安装APP则跳转至应用宝下载，延时时间设置为2秒
+							if (!hasApp)
+								window.location.href = "https://www.dlsmartercity.com/download/CityMngSystem-1.1.5-20161115(155148).apk";//android 下载地址
+						}, 2000);
+				var t1 = Date.now();
+				window.location.href = "yipai://yipai.open.dlsmartercity.com";//android app协议
+				setTimeout(function() { //t的时间就是出发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
+					var t2 = Date.now();
+					hasApp = !(!t1 || t2 - t1 < t + 150);
+				}, t);
+		}
+
+		// 这里警告框会阻塞当前页面继续加载
+	} else {
+		document.getElementById('wechatyindao').style.display = 'block';
+	}
+</script>
+
+</body>
+</html>

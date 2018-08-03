@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:property-placeholder location="classpath:jdbc.properties"
+		ignore-unresolvable="true" />
+
+	<bean id="statFilter" class="com.alibaba.druid.filter.stat.StatFilter">
+		<property name="dbType" value="mysql" />
+		<property name="slowSqlMillis" value="10000" />
+		<property name="logSlowSql" value="true" />
+		<property name="mergeSql" value="true" />
+	</bean>
+
+	<bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter" />
+
+	<bean id="abstractDataSource" abstract="true"
+		class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+		destroy-method="close">
+		<!-- 基本属性 driverClassName、url、user、password -->
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<!-- <property name="url" value="${jdbc.url}" /> <property name="username" 
+			value="${jdbc.username}" /> <property name="password" value="${jdbc.password}" 
+			/> -->
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<!-- <property name="initialSize" value="1" /> <property name="minIdle" 
+			value="1" /> <property name="maxActive" value="20" /> -->
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="20" />
+
+		<!-- 监控数据输出到日志时间间隔 -->
+		<property name="timeBetweenLogStatsMillis" value="300000" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="proxyFilters">
+			<list>
+				<ref bean="statFilter" />
+				<ref bean="logFilter" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="dataSourceRead1" parent="abstractDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${read1.jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="20" />
+	</bean>
+
+	<bean id="dataSourceWrite" parent="abstractDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${write.jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="20" />
+	</bean>
+
+	<bean id="dataSource"
+		class="com.dlsmartercity.annualaccount.datasource.DynamicDataSource">
+		<property name="writeDataSource" ref="dataSourceWrite" />
+		<property name="readDataSources">
+			<list>
+				<ref bean="dataSourceRead1" />
+			</list>
+		</property>
+		<!--轮询方式 -->
+		<property name="readDataSourcePollPattern" value="1" />
+		<property name="defaultTargetDataSource" ref="dataSourceWrite" />
+	</bean>
+
+	<bean id="pagingAspect" class="com.dlsmartercity.annualaccount.core.paging.PagingAspect" />
+
+	<bean id="dynamicDataSourceAspect"
+		class="com.dlsmartercity.annualaccount.datasource.DynamicDataSourceAspect" />
+	<aop:config>
+		<aop:aspect ref="pagingAspect">
+			<aop:around
+				pointcut="execution(java.util.List+ com.dlsmartercity.annualaccount.dao.mapper..*.*Mapper.*(..,com.dlsmartercity.annualaccount.core.dto.BaseDto+,..))"
+				method="paging" />
+		</aop:aspect>
+		<aop:aspect id="c" ref="dynamicDataSourceAspect">
+			<aop:pointcut id="tx"
+				expression="execution(* com.dlsmartercity.annualaccount.service.impl..*.*(..))" />
+			<aop:before pointcut-ref="tx" method="before" />
+			<aop:after pointcut-ref="tx" method="after" />
+		</aop:aspect>
+		<aop:aspect id="c2" ref="dynamicDataSourceAspect">
+			<aop:pointcut id="tx2"
+				expression="execution(* com.dlsmartercity.annualaccount.service..*.*(..))" />
+			<aop:before pointcut-ref="tx2" method="before" />
+			<aop:after pointcut-ref="tx2" method="after" />
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:typeAliasesPackage="com.dlsmartercity.annualaccount.dto"
+		p:configLocation="classpath:mybatis-config.xml" />
+
+	<mybatis-spring:scan base-package="com.dlsmartercity.annualaccount.dao.mapper" />
+
+</beans>

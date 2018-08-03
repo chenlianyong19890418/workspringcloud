@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>2017年度盘点</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<base href="/${msUrl}/source/">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="activity/css/swiper.min.css">
+    <link rel="stylesheet" href="activity/css/animate.min.css">
+    <link rel="stylesheet" href="activity/css/slide.css">
+
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img class="ani background" swiper-animate-delay="0.2s" src="activity/img/bg1@3x.png" alt="">
+                <div class="last">
+                    <div class="report">
+                        <div class="textLeft textBig" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">恭喜您获得</div>
+                        <div class="textLeft textYellow jiangjin" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.2s">
+                            <span class="textBig money">${redbagnum}</span>元</div>
+                        <div class="textLeft grantTime" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.2s">年终奖将会在2018年2月24日发放到益拍账户</div>
+                    </div>
+            
+                    <div class="opened">
+                        <p swiper-animate-effect="bounceAuto" swiper-animate-duration="1.2s" swiper-animate-delay="0.2s" class="wallet-prtty-img ani">
+                            <img src="activity/img/effect@3x.png">
+                        </p>
+                        <div class="openedAward textYellow">
+                            <span class="money textBig">${redbagnum}</span> 元</div>
+                         <div class="btn1">
+							<a href="${blankurl}?shareWX=shareWX" id="slideShare"><img src="activity/img/button-vote@3x.png"></a>
+						</div>
+						<div class="btn2" id="btnRank2"><a href="${rankingpage}?uid=${uid}"><img src="activity/img/button-list12@3x.png"></a></div>
+                    </div>
+                </div>
+            
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="2s" swiper-animate-delay="0.2s" src="activity/img/bg-house@3x.png"
+                    alt="">
+            
+               <!--  <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div> -->
+            
+                <div class="logo">
+                    <img class="ani" swiper-animate-effect="pulse" swiper-animate-duration="2s" swiper-animate-delay="0.2s" src="activity/img/icon-logo@3x.png"
+                        alt="">
+                </div>
+                  <div class="textYellow rule"><div class="rule2"><a href="/${msUrl}/annual/rule/2017"><< 查看活动规则>></a></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="activity/js/swiper.min.js"></script>
+    <script src="activity/js/swiper.animate1.0.2.min.js"></script>
+    <script src="activity/js/jquery.min.js"></script>
+    <script src="activity/js/aes/md5.js"></script>
+    <script src="activity/js/aes/aes_A.js"></script>
+    <script src="activity/js/aes/aes_B.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+   
+        var msUrl = "/${msUrl}";
+        var mySwiper = new Swiper('.swiper-container', {
+            on: {
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                }
+            },
+        });
+
+        $(window).on('resize.rem', function () {
+                var rem = 7.5;
+                $('html').css('font-size', $(window).width() / rem);
+            }).trigger('resize.rem');
+
+        function decode(value) {
+            return decodeURIComponent(value);
+        };
+    </script>
+</body>
+</html>

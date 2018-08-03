@@ -1,0 +1,1102 @@
+    #wechatTips {
+        padding-top: 20%;
+        font-size: 0.5rem;
+        color: #999999;
+        font-weight: bold;
+        text-align: center;
+    }
+    #wechatyindao {
+        position: absolute;
+        left: 0;
+        top:0;
+        z-index: 99999999;
+        height: 100vh;
+        width: 100%;
+        background: rgba(0,0,0,0.60);
+        text-align: right;
+
+    }
+    #wechatyindao img{
+        width: 80%;
+    }
+    .voteInfo {
+        position: relative;
+        z-index: 99999;
+        display: block;
+        height: 100%;
+        max-width: 768px;
+    }
+
+    .voteInfo .voteInfoBottomText {
+        text-align: center;
+        margin-top:0;
+        font-size: 12px;
+        line-height: 20px;
+        color: #fff;
+    }
+
+    .voteInfoPanel {
+        position: relative;
+        z-index: 99999;
+        display: block;
+        width: 100%;
+        margin-top: 28%;
+        background: url("../img/note@3x.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .voteInfoPanel .iconVoteImg {
+        position: absolute;
+        width: 50px;
+        left: 0;
+        top: 30px;
+    }
+
+    .voteInfoPanel .iconVoteImg img {
+        width: 100%;
+    }
+
+    .voteInfoPanel .pic {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: -28px;
+        width: 70px;
+        height: 70px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #000000;
+
+    }
+
+    .voteInfoPanel .pic img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .voteInfoPanel .name {
+        font-size: 14px;
+        color: #A056EF;
+        height: 80px;
+        box-sizing: border-box;
+        padding-top: 55px;
+    }
+
+    .voteInfoPanel .codeName {
+        font-size: 0.42rem;
+        line-height: 25px;
+        height: 50px;
+        font-weight: bold;
+        color: #F8C12C;
+    }
+
+    .voteInfoPanel .dataType {
+        display: flex;
+        color: #A056EF;
+        padding: 0 25px;
+    }
+
+    .voteInfoPanel .dataType .dataItem {
+        flex: 1 1 auto;
+        text-align: center;
+
+    }
+
+    .voteInfoPanel .dataType .dataItem p {
+        margin: 5px;
+    }
+
+    .voteInfoPanel .dataType .dataItem .num {
+        font-size: 22px;
+        margin-bottom: 0;
+        font-weight: 400;
+    }
+
+    .voteInfoPanel .dataType .dataItem .til {
+        font-size: 12px;
+    }
+
+    .btn-group {
+        text-align: center;
+        box-sizing: border-box;
+        padding: 5px 20px 0 20px;
+    }
+
+    .btn-group .btn-check {
+        display: inline-block;
+        width: 80%;
+        height: 60px;
+        margin: 0 auto;
+
+    }
+
+    .btn-group .btn-two {
+        display: inline-block;
+        width: 45%;
+        height: 50px;
+        margin: 0 auto;
+
+    }
+
+    .btn-group .btn-two img {
+        width: 100%;
+    }
+
+    .btn-group .btn-check img {
+        width: 100%;
+    }
+
+    .voteInfoPanel .voteTips {
+        padding-bottom: 5px;
+        font-size: 12px;
+        margin: 0;
+        color: #FD8B2D;
+    }
+
+    /* wallet */
+    .wallet {
+        position: relative;
+        z-index: 9999;
+        margin-top: 18%;
+    }
+
+    .wallet .voteStatusTitle {
+        font-size: 32px;
+        color: #FAE74C;
+        line-height: 20px;
+        margin-bottom: 5px;
+        margin-left: -32px;
+    }
+
+    .wallet .iconVoteSuccess {
+        display: inline-block;
+        vertical-align: text-bottom;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+
+    .wallet .voteNum {
+        font-size: 22px;
+        margin: 0;
+    }
+
+    .wallet .voteNum .num {
+
+        color: #FAE74C;
+    }
+
+    .wallet .wallet-txt {
+        margin: 10px 0 0 0;
+    }
+
+    .wallet .iconVoteSuccess img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .wallet .walletPanel {
+        position: relative;
+        margin-top: 30px;
+    }
+
+    .wallet .btn-group {
+        margin-top: -20px;
+    }
+
+    .wallet .walletPanel .wallet-box {
+        display: block;
+        width: 100%;
+        height: 320px;
+        background: url("../img/redpacket-off@3x.png") center center no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .wallet .walletPanel .wallet-prtty-img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .wallet .walletPanel .wallet-prtty-img img {
+        width: 100%;
+    }
+
+    .wallet .walletPanel .wallet-open-box {
+        display: block;
+        width: 100%;
+        height: 320px;
+        background: url("../img/redpacket-on12@3x.png") center center no-repeat;
+        background-size: contain;
+    }
+    .wallet .walletPanel .btn-haveWallet{
+        position: absolute;
+        width: 85%;
+        bottom: 7%;
+        left: 7.5%;
+    }
+    .wallet .walletPanel .btn-haveWallet img{
+        width: 100%;
+    }
+
+    .btn-group.outside {
+        margin-top: 10px;
+    }
+
+    .wallet .btn-group.outside {
+        margin-top: -10%;
+    }
+    .one.fullWidth{
+        width: 90%;
+        left:5%;
+        margin-top: 3%;
+    }
+    .ranking {
+    }
+
+    .ranking .rankTitle {
+        font-size: 0.7rem;
+        font-weight: bold;
+        color: #fff;
+        margin: 0.2rem 0;
+    }
+
+    .rankList .rankItem {
+        display: flex;
+        background: url("../img/list-table@3x.png") no-repeat left center;
+        background-size: cover;
+        margin-bottom: 1px;
+    }
+    .rankList .rankItem.Self {
+        display: flex;
+        width: 105%;
+        background: url("../img/list-table-self@3x.png") no-repeat left center;
+        margin-left: -2.5%;
+        background-size: cover;
+    }
+
+    .rankList .rankItem p {
+        margin: 0;
+        padding: 10px 5px;
+        font-size: 14px;
+    }
+    .rankList .rankItem.Self p{
+        margin: 0;
+        padding: 12px 5px;
+    }
+    .rankList .rankItem .rankNum {
+        flex: 0 0 45px;
+        text-align: center;
+    }
+
+    .rankList .rankItem .rankName {
+        flex: 0 0 105px;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        text-align: left;
+    }
+
+    .rankList .rankItem .rankCodeName {
+        flex: 1 1 auto;
+        color: #7ED7ED;
+    }
+
+    .rankList .rankItem .rankInfo {
+        flex: 0 0 80px;
+        color: #F9E44E;
+    }
+    .ranking .rankTips{
+        text-align: left;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .ranking .rankTips:before{
+        display: inline-block;
+        margin-right: 5px;
+        width: 5px;
+        height: 5px;
+        margin-top: -2px;
+        border-radius: 50%;
+        background: #ffffff;
+        content: '';
+    }
+    .ranking .ruleTips{
+        text-align: left;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    /*--------------手机适配-----------------*/
+
+    @media (max-width: 640px) {
+
+        .one {
+            margin-top: 4%;
+        }
+
+        .voteInfoPanel {
+        padding-bottom:20px;
+        }
+
+        .voteInfoPanel .codeName {
+            height: 40px;
+        }
+
+        .voteInfoPanel .dataType {
+            padding-top: 20px;
+
+        }
+        .voteInfoPanel .iconVoteImg {
+        position: absolute;
+        width: 40px;
+        left: 0;
+        top: 30px;
+    }
+ .voteInfoPanel .name {
+        font-size: 14px;
+        color: #A056EF;
+        height: 80px;
+        box-sizing: border-box;
+        padding-top: 50px;
+    }
+      .voteInfoPanel .codeName {
+            line-height: 30px;
+        }
+        .btn-group {
+        position:relative;
+        z-index:999999999;
+            margin-top: 5px;
+        }
+
+        .btn-group.outside {
+            margin-top: 0px;
+        }
+
+        .btn-group .btn-check {
+            display: inline-block;
+            width: 80%;
+            height: 55px;
+            margin: 0 auto;
+
+        }
+
+        .btn-group .btn-two {
+            display: inline-block;
+            width: 48%;
+            height: 50px;
+            margin: 0 auto;
+        }
+        .btn-group.outside .btn-check {
+            display: inline-block;
+            width: 90%;
+            height: 65px;
+            margin: 0 auto;
+
+        }
+        .rankList .rankItem p {
+            margin: 0;
+            padding: 8px 3px;
+            font-size: 13px;
+        }
+        .rankList .rankItem.Self p{
+            margin: 0;
+            padding: 9px 5px;
+        }
+        .rankList .rankItem .rankNum {
+            flex: 0 0 45px;
+            text-align: center;
+        }
+
+        .rankList .rankItem .rankName {
+            flex: 0 0 95px;
+            white-space:nowrap;
+        text-overflow:ellipsis;
+        text-align: left;
+        }
+
+        .rankList .rankItem .rankCodeName {
+            flex: 1 1 auto;
+            color: #7ED7ED;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 80px;
+            color: #F9E44E;
+        }
+        .ranking .rankTips{
+            text-align: left;
+            margin-top: 8px;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+        .ranking .rankTips:before{
+            display: inline-block;
+            margin-right: 5px;
+            width: 5px;
+            height: 5px;
+            margin-top: -2px;
+            border-radius: 50%;
+            background: #ffffff;
+            content: '';
+        }
+        .ranking .ruleTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    }
+
+    /* ipad */
+    @media (min-width: 768px) {
+        .logo{
+            width: 140px;
+        }
+        .one {
+            margin-top: -4%;
+        }
+
+        .voteInfoPanel {
+            height: 62%;
+        }
+
+        .voteInfo .voteInfoBottomText {
+            font-size: 24px;
+            line-height: 35px;
+            color: #fff;
+        }
+
+        .voteInfoPanel .iconVoteImg {
+            position: absolute;
+            width: 100px;
+            left: 0;
+            top: 60px;
+        }
+
+        .voteInfoPanel .pic {
+            margin-top: -60px;
+            width: 120px;
+            height: 120px;
+            border: 3px solid #fff;
+        }
+
+        .voteInfoPanel .name {
+            font-size: 32px;
+            color: #A056EF;
+            height: 200px;
+            box-sizing: border-box;
+            padding-top: 80px;
+        }
+
+        .voteInfoPanel .codeName {
+            line-height: 0;
+        }
+
+        .voteInfoPanel .dataType {
+            padding-top: 0px;
+            margin: 0 20px;
+
+        }
+
+        .voteInfoPanel .dataType .dataItem .num {
+            font-size: 50px;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        .voteInfoPanel .dataType .dataItem .til {
+            font-size: 25px;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            margin-top: 10px;
+        }
+
+        .btn-group .btn-check {
+            display: inline-block;
+            width: 80%;
+            height: 115px;
+            margin: 0 auto;
+
+        }
+
+        .btn-group .btn-two {
+            display: inline-block;
+            width: 45%;
+            height: 115px;
+            margin: 0 auto;
+
+        }
+
+        .voteInfoPanel .voteTips {
+            padding-bottom: 5px;
+            font-size: 24px;
+            margin: 0;
+            color: #FD8B2D;
+        }
+
+        .wallet {
+            margin-top: 28%;
+        }
+
+        .wallet .voteStatusTitle {
+            font-size: 58px;
+            color: #FAE74C;
+            line-height: 20px;
+            margin-bottom: 20px;
+            margin-left: -60px;
+        }
+
+        .wallet .iconVoteSuccess {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            margin-right: 5px;
+        }
+
+        .wallet .voteNum {
+            font-size: 38px;
+            margin: 0;
+        }
+
+        .wallet .wallet-txt {
+            margin: 30px 0 0 0;
+        }
+
+        .wallet .walletPanel {
+            margin-top: 60px;
+        }
+
+        .wallet .walletPanel .wallet-prtty-img {
+            left: 10%;
+            top: 0;
+            width: 80%;
+        }
+
+        .wallet .walletPanel .wallet-box {
+            height: 500px;
+
+        }
+
+        .wallet .walletPanel .wallet-open-box {
+            height: 500px;
+
+        }
+        .wallet .walletPanel .btn-haveWallet{
+            width: 80%;
+            left: 10%;
+            bottom: 3%;
+        }
+        .wallet .btn-group.outside {
+            margin-top: -5%;
+        }
+        .rankList .rankItem p {
+            margin: 0;
+            padding: 15px 5px;
+            font-size: 18px;
+        }
+        .rankList .rankItem.Self p{
+            margin: 0;
+            padding: 12px 5px;
+        }
+        .rankList .rankItem .rankNum {
+            flex: 0 0 45px;
+            text-align: center;
+        }
+
+        .rankList .rankItem .rankName {
+            flex: 0 0 95px;
+            white-space:nowrap;
+        text-overflow:ellipsis;
+        text-align: left;
+            text-align: left;
+        }
+
+        .rankList .rankItem .rankCodeName {
+            flex: 1 1 auto;
+            color: #7ED7ED;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 80px;
+            color: #F9E44E;
+        }
+        .ranking .rankTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .ranking .rankTips:before{
+            display: inline-block;
+            margin-right: 5px;
+            width: 5px;
+            height: 5px;
+            margin-top: -2px;
+            border-radius: 50%;
+            background: #ffffff;
+            content: '';
+        }
+        .ranking .ruleTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    }
+
+    /* ipad Pro */
+    @media (min-width: 1024px) {
+        .logo{
+            width: 160px;
+        }
+        .one {
+            margin-top: 0;
+        }
+
+        .voteInfoPanel {
+            height: 52%;
+        }
+
+        .voteInfo .voteInfoBottomText {
+            font-size: 32px;
+            line-height: 50px;
+            color: #fff;
+        }
+
+        .voteInfoPanel .iconVoteImg {
+            position: absolute;
+            width: 120px;
+            left: 0;
+            top: 80px;
+        }
+
+        .voteInfoPanel .pic {
+            margin-top: -75px;
+            width: 150px;
+            height: 150px;
+            border: 3px solid #fff;
+        }
+
+        .voteInfoPanel .name {
+            font-size: 32px;
+            color: #A056EF;
+            height: 200px;
+            box-sizing: border-box;
+            padding-top: 120px;
+        }
+
+        .voteInfoPanel .codeName {
+            line-height: 40px;
+        }
+
+        .voteInfoPanel .dataType {
+            padding-top: 30px;
+
+        }
+
+        .voteInfoPanel .dataType .dataItem .num {
+            font-size: 50px;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        .voteInfoPanel .dataType .dataItem .til {
+            font-size: 32px;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            margin-top: 10px;
+        }
+
+        .btn-group .btn-check {
+            display: inline-block;
+            width: 70%;
+            height: 135px;
+            margin: 0 auto;
+
+        }
+
+        .voteInfoPanel .voteTips {
+            padding-bottom: 0px;
+            font-size: 28px;
+            margin: 0;
+            color: #FD8B2D;
+        }
+
+        /*wallet*/
+        .wallet {
+            margin-top: 18%;
+        }
+
+        .wallet .voteStatusTitle {
+            font-size: 68px;
+            color: #FAE74C;
+            line-height: 20px;
+            margin-bottom: 20px;
+            margin-left: -80px;
+        }
+
+        .wallet .iconVoteSuccess {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            margin-right: 5px;
+        }
+
+        .wallet .voteNum {
+            font-size: 45px;
+            margin: 0;
+        }
+
+        .wallet .wallet-txt {
+            margin: 30px 0 0 0;
+        }
+
+        .wallet .walletPanel {
+            margin-top: 60px;
+        }
+
+        .wallet .walletPanel .wallet-prtty-img {
+            position: absolute;
+            left: 15%;
+            top: 0;
+            width: 70%;
+            height: 100%;
+
+        }
+
+        .wallet .walletPanel .wallet-box {
+            height: 600px;
+        }
+
+        .wallet .walletPanel .wallet-open-box {
+            height: 600px;
+
+        }
+        .wallet .walletPanel .btn-haveWallet{
+            width: 70%;
+            left: 15%;
+            bottom: 3%;
+        }
+        .wallet .btn-group.outside {
+            margin-top: -5%;
+        }
+        .rankList .rankItem p {
+            margin: 0;
+            padding: 15px 5px;
+            font-size: 18px;
+        }
+        .rankList .rankItem.Self p{
+            margin: 0;
+            padding: 12px 5px;
+        }
+        .rankList .rankItem .rankNum {
+            flex: 0 0 60px;
+            text-align: center;
+        }
+
+        .rankList .rankItem .rankName {
+            flex: 0 0 150px;
+            white-space:nowrap;
+        text-overflow:ellipsis;
+        text-align: left;
+            text-align: left;
+        }
+
+        .rankList .rankItem .rankCodeName {
+            flex: 1 1 auto;
+            color: #7ED7ED;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 120px;
+            color: #F9E44E;
+        }
+        .ranking .rankTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 22px;
+        }
+        .ranking .rankTips:before{
+            display: inline-block;
+            margin-right: 5px;
+            width: 5px;
+            height: 5px;
+            margin-top: -2px;
+            border-radius: 50%;
+            background: #ffffff;
+            content: '';
+        }
+        .ranking .ruleTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 22px;
+        }
+    }
+     @media only screen and (device-width:375px) and (-webkit-device-pixel-ratio: 3) {
+      .up {
+            width: 67%;
+            padding: 23% 20% 0 20%;
+        }
+        .down{
+	        line-height: 20px;
+	        letter-spacing: 1px;
+	    }
+	    .ndpd{
+	    	 bottom:10%;
+	    }
+      }
+    @media (max-width:320px) {
+        .one {
+            margin-top: 5%;
+        }
+  		.up {
+            width: 58%;
+            padding: 15% 25% 0 25%;
+        }
+        .down{
+	        line-height: 20px;
+	        letter-spacing: 1px;
+	    }
+        .voteInfoPanel {
+        }
+        .voteInfoPanel .pic {
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: -30px;
+            width: 60px;
+            height: 60px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #000000;
+
+        }
+        .voteInfoPanel .name {
+            font-size: 14px;
+            color: #A056EF;
+            height: 60px;
+            box-sizing: border-box;
+            padding-top: 45px;
+        }
+
+        .voteInfoPanel .codeName {
+            height: 50px;
+            margin-bottom: 0;
+        }
+
+        .voteInfoPanel .dataType {
+            padding-top: 0;
+
+        }
+        .voteInfo .voteInfoBottomText{
+            padding: 0;
+            margin-top:0;
+        }
+        .wallet .walletPanel .wallet-box {
+        display: block;
+        width: 100%;
+        height: 250px;
+        background: url("../img/redpacket-off@3x.png") center center no-repeat;
+        background-size: contain;
+    }
+    .wallet .walletPanel .wallet-open-box {
+        display: block;
+        width: 100%;
+        height: 250px;
+        background: url("../img/redpacket-on12@3x.png") center center no-repeat;
+        background-size: contain;
+    }
+        .btn-group {
+            margin-top: 5px;
+        }
+
+        .btn-group.outside {
+            margin-top: 0;
+        }
+
+        .btn-group .btn-check {
+            display: inline-block;
+            width: 80%;
+            height: 55px;
+            margin: 0 auto;
+
+        }
+.voteInfoPanel .iconVoteImg{width:30px;}'
+        .btn-group .btn-two {
+            display: inline-block;
+            width: 48%;
+            height: 50px;
+            margin: 0 auto;
+        }
+        .btn-group.outside .btn-check {
+            display: inline-block;
+            width: 90%;
+            height: 45px;
+            margin: 0 auto;
+
+        }
+        .one.fullWidth{
+            margin-top: 1%;
+        }
+        .ranking .rankTitle {
+            font-size: 0.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 0.2rem 0;
+        }
+        .ranking .rankTips{
+            text-align: left;
+            margin-top: 5px;
+            font-size: 0.2rem;
+            margin-bottom: 2px;
+        }
+        .ranking .rankTips:before{
+            display: inline-block;
+            margin-right: 5px;
+            width: 5px;
+            height: 5px;
+            margin-top: -3px;
+            border-radius: 50%;
+            background: #ffffff;
+            content: '';
+        }
+
+        .rankList .rankItem p {
+            margin: 0;
+            padding: 6px 2px;
+            font-size: 12px;
+        }
+        .rankList .rankItem.Self p{
+            margin: 0;
+            padding: 5px 2px;
+        }
+        .rankList .rankItem .rankNum {
+            flex: 0 0 40px;
+            text-align: center;
+        }
+
+        .rankList .rankItem .rankName {
+            flex: 0 0 85px;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+            text-align: left;
+        }
+
+        .rankList .rankItem .rankCodeName {
+            flex: 1 1 auto;
+            color: #7ED7ED;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 65px;
+            color: #F9E44E;
+        }
+    }
+    /*上下浮动*/
+    @-webkit-keyframes bounceAuto {
+        0%, 100%, 20%, 53%, 80% {
+            -webkit-transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+            transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        40%, 43% {
+            -webkit-transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            -webkit-transform: translate3d(0, -30px, 0);
+            transform: translate3d(0, -30px, 0)
+        }
+        70% {
+            -webkit-transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            -webkit-transform: translate3d(0, -15px, 0);
+            transform: translate3d(0, -15px, 0)
+        }
+        90% {
+            -webkit-transform: translate3d(0, -4px, 0);
+            transform: translate3d(0, -4px, 0)
+        }
+    }
+
+    @keyframes bounceAuto {
+        0%, 100%, 20%, 53%, 80% {
+            -webkit-transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+            transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+            -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        40%, 43% {
+            -webkit-transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            -webkit-transform: translate3d(0, -30px, 0);
+            -ms-transform: translate3d(0, -30px, 0);
+            transform: translate3d(0, -30px, 0)
+        }
+        70% {
+            -webkit-transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            transition-timing-function: cubic-bezier(0.755, .050, .855, .060);
+            -webkit-transform: translate3d(0, -15px, 0);
+            -ms-transform: translate3d(0, -15px, 0);
+            transform: translate3d(0, -15px, 0)
+        }
+        90% {
+            -webkit-transform: translate3d(0, -4px, 0);
+            -ms-transform: translate3d(0, -4px, 0);
+            transform: translate3d(0, -4px, 0)
+        }
+    }
+
+
+   @-webkit-keyframes bounceAuto1 {
+        0% {
+            -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        100% {
+            -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+            -webkit-transform: translate3d(0, -30px, 0);
+            transform: translate3d(0, -30px, 0)
+        }
+    }
+
+    @keyframes bounceAuto1 {
+        0% {
+            -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        100% {
+            -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+            -webkit-transform: translate3d(0, -30px, 0);
+            transform: translate3d(0, -30px, 0)
+        }
+    }
+
+    .bounceAuto {
+        -webkit-animation-name: bounceAuto1;
+        animation-name: bounceAuto1;
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+        animation-iteration-count:infinite;
+        -webkit-animation-iteration-count:infinite;
+        -webkit-transform-origin: center bottom;
+        -ms-transform-origin: center bottom;
+        transform-origin: center bottom
+    }

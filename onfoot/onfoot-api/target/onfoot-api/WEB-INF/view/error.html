@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>2017年度盘点</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<base href="/${msUrl}/source/">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slide.css">
+    <link rel="stylesheet" href="css/voteinfo.css">
+    <style>
+    .backgroundfm{
+         background: url(activity/img/bg_home@2x.png) 100% 100% no-repeat;
+         background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<!-- Swiper -->
+<div id="wechatTips" style="display: none;">请使用微信打开页面</div>
+<div class="swiper-container" id="wechatNone">
+    <div class="swiper-wrapper backgroundfm">
+    <div class="alert-box" style="display: none;height:50px; line-height: 50px; position:absolute; z-index: 99999999;top:50%; left:50%; transform:translate(-50%,-70%); background:rgba(0,0,0,0.60); font-size: 0.4rem;color: #fff; padding: 6px 20px ; min-width: 70%; text-align: center; ">
+    </div>
+        <div class="swiper-slide">
+<#if retcode=='0035'>
+<div class="one" style="z-index:11;   background: transparent;position: absolute;top: 0;left: 10%; margin-top: 10%;
+    letter-spacing: 1px;
+    width: 80%;
+    height: 100vh;
+    color: #fff;">
+                    <div class="up">
+                        <img src="activity/img/wenzi@3x.png" alt="">
+                    </div>
+            
+                    <div class="center">
+                        <img src="activity/img/tubiao@3x.png" alt="">
+                    </div>
+            
+                    <div class="down">
+                        <div>辛苦了一年，我们</div>
+                        <div>已为您准备好了现金年终奖哦</div>
+                    </div>
+                </div>
+            
+                <div class="star01">
+                    <img class="ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="2s" swiper-animate-delay="0.2s" src="activity/img/icon-star1@3x.png"
+                        alt="">
+                </div>
+                
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="2s" swiper-animate-delay="0.2s" src="activity/img/zu8@2x.png" alt="">
+                
+                <div class="star02">
+                    <img class="ani" swiper-animate-effect="slideInRight" swiper-animate-duration="2s" swiper-animate-delay="0.2s" src="activity/img/icon-star2@3x.png"
+                        alt="">
+                </div>
+
+              <a href="/${msUrl}/annual/download/2017"> <div class="ndpd">
+                    <img class="" src="activity/img/ndpd.png" alt="">
+                </div> 
+            </a>
+                <div class="littlestar">
+                    <img src="activity/img/littlestar@3x.png" alt="">
+                </div>
+
+                <div class="littlestar1">
+                    <img src="activity/img/littlestar1@3x.png" alt="">
+                </div>
+
+                <div class="littlestar2">
+                    <img src="activity/img/littlestar2@3x.png" alt="">
+                </div>
+            </div>
+<#else>
+  <div class="one" style="text-align:center">
+   		${retmessage}
+   </div>
+</#if>
+
+ 
+   
+<#include "base/foot.html"/>

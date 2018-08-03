@@ -1,0 +1,148 @@
+        </div>
+    </div>
+</div>
+
+<!-- Swiper JS -->
+<script type="text/javascript">
+	msUrl = "${msUrl}";
+</script>
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/urls.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    $(window).on('resize.rem', function() {
+        var rem = 7.5;
+        $('html').css('font-size', $(window).width() / rem);
+    }).trigger('resize.rem');
+
+    var mySwiper = new Swiper('.swiper-container', {
+        on: {
+            init: function() {
+                swiperAnimateCache(this); //隐藏动画元素
+                swiperAnimate(this); //初始化完成开始动画
+            },
+            slideChangeTransitionEnd: function() {
+                swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+            }
+        },
+        direction: 'vertical',
+        slidesPerView: 1,
+        spaceBetween: 30,
+        mousewheel: true,
+        // followFinger: true,
+        shortSwipes: true,
+        // pagination: {
+        //   el: '.swiper-pagination',
+        //   clickable: true,
+        // },
+    });
+
+    var uploadNum = 1;
+    var flag = 1;
+
+    if (uploadNum == 1) {
+        mySwiper.removeSlide(2);
+    }
+
+    if (flag == 1) {
+        mySwiper.removeSlide(6);
+    }
+    $(".alert-box").on("click",function(){
+    	$(".alert-box").hide();
+    });
+
+    /*只能微信打开浏览器判断~*/
+    // 对浏览器的UserAgent进行正则匹配，不含有微信独有标识的则为其他浏览器
+    var useragent = navigator.userAgent;
+    var wrap = document.getElementById('wechatNone');
+    if (useragent.match(/MicroMessenger/i) != 'MicroMessenger') {
+        // 这里警告框会阻塞当前页面继续加载
+        wrap.style.display='none';
+        document.getElementById('wechatTips').style.display='block';
+        // 以下代码是用javascript强行关闭当前页面
+        //        var opened = window.open('about:blank', '_self');
+        //        opened.opener = null;
+       //        opened.close();
+    }
+    
+    $(function(){
+    	return ;
+    	//微信分享开始
+        $.getScript('https://res.wx.qq.com/open/js/jweixin-1.2.0.js', function () {
+        	function getData(url, paramsObj) {
+                if (!url) {
+                    return;
+                } else {
+                    return $.ajax({
+                        url: url,
+                        data: paramsObj || {},
+                        async: false,
+                        dataType: 'json'
+                    }).responseJSON;
+                }
+            }
+        	
+    		function apiGetSignature(url) {
+                return getData('/${msUrl}/weChatshare/getSignature', {
+                    url: url
+                });
+            };
+    			
+            var res = apiGetSignature(location.href.split('#')[0]);
+            /* var msg = function (content) {
+                layer.open({
+                    skin: 'msg'
+                    ,time: 2
+                    ,shadeClose: false
+                    ,content: content + '<style>.layui-m-layercont {padding: 10px 20px !important; color: #fff;}</style>'
+                });
+            } */
+
+            // console.log(res);
+            // console.log('----------------------------------------');
+            
+            var options = {
+                title: '带你重温2017，我们一起走过的路',
+                desc: '2017益拍年终盘点',
+                link:  location.href,
+                imgUrl: location.origin + '/${msUrl}/source/img/pandian.png',
+                success: function () {
+                    //return msg('已成功分享');
+                },
+                cancel: function () {
+                    //return msg('已取消分享');
+                }
+            }
+            
+            wx.config({
+                debug: true,
+                appId: 'wx179a4e78e9d7731e',
+                timestamp: res.data.timestamp,
+                nonceStr: res.data.noncestr,
+                signature: res.data.signature,
+                jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'/*, 'hideAllNonBaseMenuItem', 'showMenuItems', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'*/]
+            });
+
+            wx.ready(function() {
+                wx.onMenuShareTimeline(options);
+                wx.onMenuShareAppMessage(options);
+                /*wx.onMenuShareQQ(options);
+                 wx.onMenuShareWeibo(options);
+                 wx.onMenuShareQZone(options);
+                wx.hideAllNonBaseMenuItem();
+                wx.showMenuItems({
+                    menuList: [
+                        'menuItem:share:timeline'
+                        ,'menuItem:share:appMessage'
+                    ]
+                });*/
+            });
+        });
+    	//微信分享结束
+    });
+</script>
+</body>
+</html>

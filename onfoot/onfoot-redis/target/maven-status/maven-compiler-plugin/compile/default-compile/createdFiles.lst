@@ -1,0 +1,6 @@
+com\dlsmartercity\annualaccount\redis\repositories\IdCardPasswordBackInfoRepository.class
+com\dlsmartercity\annualaccount\redis\entity\PhoneNoPasswordBackInfo.class
+com\dlsmartercity\annualaccount\redis\RedisConfig.class
+com\dlsmartercity\annualaccount\redis\repositories\PhoneNoPasswordBackInfoRepository.class
+com\dlsmartercity\annualaccount\redis\lock\RedisLock.class
+com\dlsmartercity\annualaccount\redis\entity\IdCardPasswordBackInfo.class

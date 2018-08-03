@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>大数据手动同步</title>
+<script type="text/javascript">
+	function sub() {
+		var syncDate = document.form1.syncDate.value;
+		if (syncDate == "") {
+			alert("请选择日期!");
+			return;
+		}
+		document.form1.submit();
+	}
+</script>
+</head>
+<body>
+
+	<form action="syncBigData" name="form1" method="post">
+		<table>
+			<tr>
+				<td>同步日期：</td>
+				<td><input id="syncDate" name="syncDate" class="Wdate"   /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" name="button" value="提交" onClick="sub()" /></td>
+			</tr>
+		</table>
+	</form>
+   ${message}
+<#include "../../common/table.html"/>
+</body>
+</html>

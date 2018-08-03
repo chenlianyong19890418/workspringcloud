@@ -1,0 +1,297 @@
+   html{
+        background:#463fa3 url(../img/bg-over@2x.png) 100% 100% no-repeat;
+        background-size:cover;
+        min-height:110%;
+    }
+    body{
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        /* font-size: 10px; */
+        /* height:100%; */
+    }
+    .container {
+        width:100%;
+        height:100%;
+        color:#eee;
+        /* letter-spacing: 1px; */
+    }
+
+    .one.fullWidth{
+        width: 90%;
+        margin-top: 8px;
+    }
+    .ranking .rankTitle {
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .rankList .rankItem {
+        display: flex;
+        background: url("../img/list-table@3x.png") left 100% no-repeat;
+        background-size: cover;
+        margin-bottom: 1px;
+    }
+    .rankList .rankItem.Self {
+        display: flex;
+        width: 105%;
+        background: url("../img/list-table-self@3x.png") left 100% no-repeat;
+        margin-left: -2.5%;
+        background-size: cover;
+    }
+/* 
+    .rankList .rankItem p {
+        margin: 0;
+        padding: 8px 4px;
+        font-size: 14px;
+    } */
+    .rankList .rankItem.Self p{
+        margin: 0;
+        padding: 10px 5px;
+    }
+    .rankList .rankItem .rankNum {
+        flex: 0 0 45px;
+        text-align: center;
+    }
+
+    .rankList .rankItem .rankName {
+        flex: 0 0 105px;
+        text-align: left;
+        max-width: 75px;
+        overflow: hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
+
+    .rankList .rankItem .rankCodeName {
+        flex: 1 1 auto;
+        color: #7ED7ED;
+        text-align: center;
+    }
+
+    .rankList .rankItem .rankInfo {
+        flex: 0 0 80px;
+        color: #F9E44E;
+    }
+    .ranking .rankTips{
+        text-align: left;
+        /* margin-top: 10px; */
+        font-size: 14px;
+    }
+    .ranking .rankTips:before{
+        display: inline-block;
+        margin-right: 5px;
+        width: 5px;
+        height: 5px;
+        margin-top: -2px;
+        border-radius: 50%;
+        background: #ffffff;
+        content: '';
+    }
+    .listRule{
+        width:90%;
+    }
+    /*--------------手机适配-----------------*/
+    @media (max-width: 640px) {
+        .one {
+            margin-top: 10px;
+        }
+        .rankList .rankItem p {
+            margin: 0;
+            padding: 9px 5px;
+            font-size: 13px;
+        }
+        .rankList .rankItem.Self p{
+            margin: 0;
+            padding: 10px 5px;
+        }
+        .rankList .rankItem .rankNum {
+            flex: 0 0 45px;
+            text-align: center;
+        }
+
+        .rankList .rankItem .rankName {
+            flex: 0 0 95px;
+            text-align: left;
+        }
+
+        .rankList .rankItem .rankCodeName {
+            flex: 1 1 auto;
+            color: #7ED7ED;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 80px;
+            color: #F9E44E;
+        }
+        .ranking .rankTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .ranking .rankTips:before{
+            display: inline-block;
+            margin-right: 5px;
+            width: 5px;
+            height: 5px;
+            margin-top: -2px;
+            border-radius: 50%;
+            background: #ffffff;
+            content: '';
+        }
+        .ranking .ruleTips{
+            text-align: left;
+            /* margin-top: 6px; */
+            font-size: 10px;
+        }
+    }
+    /* ipad */
+    @media (min-width: 768px) {
+        .logo{
+            width: 140px;
+        }
+        .one {
+            margin-top: -8%;
+        }
+        .rankList .rankItem p {
+            margin: 0;
+            padding: 15px 5px;
+            font-size: 18px;
+        }
+        .rankList .rankItem.Self p{
+            margin: 0;
+            padding: 12px 5px;
+        }
+        .rankList .rankItem .rankNum {
+            flex: 0 0 45px;
+            text-align: center;
+        }
+
+        .rankList .rankItem .rankName {
+            flex: 0 0 95px;
+            text-align: left;
+        }
+
+        .rankList .rankItem .rankCodeName {
+            flex: 1 1 auto;
+            color: #7ED7ED;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 80px;
+            color: #F9E44E;
+        }
+        .ranking .rankTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .ranking .rankTips:before{
+            display: inline-block;
+            margin-right: 5px;
+            width: 5px;
+            height: 5px;
+            margin-top: -2px;
+            border-radius: 50%;
+            background: #ffffff;
+            content: '';
+        }
+        .ranking .ruleTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    }
+
+    /* ipad Pro */
+    @media (min-width: 1024px) {
+        .logo{
+            width: 160px;
+        }
+        .one {
+            margin-top: 0;
+        }
+        .rankList .rankItem p {
+            margin: 0;
+            padding: 15px 5px;
+            font-size: 18px;
+        }
+        .rankList .rankItem.Self p{
+            margin: 0;
+            padding: 12px 5px;
+        }
+        .rankList .rankItem .rankNum {
+            flex: 0 0 60px;
+            text-align: center;
+        }
+
+        .rankList .rankItem .rankName {
+            flex: 0 0 150px;
+            text-align: left;
+        }
+
+        .rankList .rankItem .rankCodeName {
+            flex: 1 1 auto;
+            color: #7ED7ED;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 120px;
+            color: #F9E44E;
+        }
+        .ranking .rankTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 22px;
+        }
+        .ranking .rankTips:before{
+            display: inline-block;
+            margin-right: 5px;
+            width: 5px;
+            height: 5px;
+            margin-top: -2px;
+            border-radius: 50%;
+            background: #ffffff;
+            content: '';
+        }
+        .ranking .ruleTips{
+            text-align: left;
+            margin-top: 10px;
+            font-size: 22px;
+        }
+    }
+  /* iphone5 */
+    @media (max-width: 320px) {
+        .body{
+            height:100%;
+        }
+        .ranking .rankTitle {
+             font-size: 20px;
+        }
+        .rankItem{
+            height:27px;
+        }
+        .Self{
+            line-height:10px;
+        }
+        .rankList .rankItem.Self .rankNum {
+            flex: 0 0 34px;
+        }
+
+        .rankList .rankItem .rankInfo {
+            flex: 0 0 60px;
+        }
+    }
+     @media (max-width: 375px) {
+        .ranking .rankTitle {
+             font-size: 20px;
+        }
+        .rankList .rankItem p {
+            padding: 6px 1px;
+        }
+    }
+     

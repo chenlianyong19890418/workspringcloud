@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>2017年度盘点</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="msapplication-tap-highlight" content="no">
+    <base href="/${msUrl}/source/">
+    <script src="activity/js/jquery.min.js"></script>
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="activity/css/swiper.min.css">
+    <link rel="stylesheet" href="activity/css/animate.min.css">
+    <link rel="stylesheet" href="activity/css/slide.css">
+ <!-- Swiper JS -->
+    <script src="activity/js/swiper.min.js"></script>
+    <script src="activity/js/swiper.animate1.0.2.min.js"></script>
+    <!-- <script src="activity/js/jquery.min.js"></script> -->
+    <script src="activity/js/echarts.min.js"></script>
+    <script src="activity/js/slide.js"></script>
+    <script>
+    generateurl = "${generateurl}";
+    endYearUserReward = "${endYearUserReward}";
+    rankingpage = "${rankingpage}";
+    msUrl = "/${msUrl}";
+    $(function() {
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            centerX = canvas.width / 2,
+            centerY = canvas.height / 2,
+            rad = Math.PI * 2 / 100,
+            range = 0.2,
+            ok = !1,
+            speed = 0.1;
+
+        function blueCircle(n) {
+            context.save();
+            context.strokeStyle = "white";
+            context.lineWidth = 5;
+            context.beginPath();
+            context.arc(centerX - 2, centerY, 40, -Math.PI / 2, n >= 99 ? 100 : (-Math.PI / 2 + n * rad), false);
+            context.stroke();
+            context.closePath();
+            context.restore();
+        }
+
+        function whiteCircle() {
+            context.save();
+            context.beginPath();
+            context.strokeStyle = "white";
+            context.arc(centerX - 2, centerY, 40, 0, Math.PI * 2, false);
+            context.stroke();
+            context.closePath();
+            context.restore();
+        }
+
+        function text(n) {
+            context.save();
+            context.strokeStyle = "white";
+            context.font = "12px Arial";
+            context.strokeText(n.toFixed(0) + "%", n >= 99 ? (centerX - 18) : (centerX - 12), centerY + 4);
+            context.stroke();
+            context.restore();
+        }
+
+        function callback() {
+            $('#canvas').parent().fadeOut(1.5e3);
+            $('#canvas').parent().parent().removeClass("swiper-no-swiping");
+        }
+
+        ;
+        (function drawFrame() {
+            window.requestAnimationFrame(drawFrame, canvas);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            whiteCircle();
+            text(speed);
+            blueCircle(speed);
+            if (speed >= 99) {
+                speed = 100;
+                return callback();
+            } else {
+                speed += range;
+            }
+        }());
+
+        window.setInterval(function() {
+            if (!ok) {
+                if (speed >= 92) {
+                    range = 0;
+                } else {
+                    range = range * 0.7;
+                }
+            }
+        }, 2e3);
+
+        window.onload = function() {
+            this.setTimeout(function() {
+                ok = !0;
+                range = 1.5;
+            }, .15e3);
+        }
+    });
+    </script>
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="activity/css/swiper.min.css">
+    <link rel="stylesheet" href="activity/css/animate.min.css">
+    <link rel="stylesheet" href="activity/css/slide.css">
+</head>
+
+<body>
+<div class="alert-box" style="display: none;height:30px; line-height: 30px; position:absolute; z-index: 99999999;top:54%; left:50%; transform:translate(-50%,-70%); background:rgba(0,0,0,0.60); font-size: 0.34rem;color: #fff; padding: 6px 20px ; min-width: 70%; text-align: center; ">
+    </div>
+	<input type="hidden" id="uid" value="${uid}">
+	<audio preload="auto" loop id="audio" autoplay="autoplay">
+		<source src="activity/img/OneWish.mp3" type="audio/mp3" />
+	</audio>	
+    <!-- Swiper -->
+    <div class="swiper-container" id="swiper">
+        <div class="swiper-wrapper">
+            <!-- main -->
+            <div class="slide-main swiper-slide background1 backgroundfm swiper-no-swiping">
+                <div style="height:100%; width:100%; text-align:center; background-color: #3E1E88; z-index:33333; padding-top: 50%;">
+                    <canvas id="canvas" width="200" height="200" style="background:#3E1E88;width:150px;height:150px;"></canvas>
+                </div>
+                <div class="one ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s" style="z-index:11">
+                    <div class="up">
+                        <img src="activity/img/wenzi@3x.png" alt="">
+                    </div>
+                    <div class="center">
+                        <img src="activity/img/tubiao@3x.png" alt="">
+                    </div>
+                    <div class="down">
+                        <div>辛苦了一年，我们</div>
+                        <div>已为您准备好了现金年终奖哦</div>
+                    </div>
+                </div>
+                <div class="star01">
+                    <img class="ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s" src="activity/img/icon-star1@3x.png" alt="">
+                </div>
+                <img class="house house1 ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0s" src="activity/img/zu8@2x.png" alt="">
+                <div class="star02">
+                    <img class="ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s" src="activity/img/icon-star2@3x.png" alt="">
+                </div>
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+                <div class="littlestar">
+                    <img src="activity/img/littlestar@3x.png" alt="">
+                </div>
+                <div class="littlestar1">
+                    <img src="activity/img/littlestar1@3x.png" alt="">
+                </div>
+                <div class="littlestar2">
+                    <img src="activity/img/littlestar2@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- zero -->
+            <div class="slide-0 swiper-slide background1">
+                <div class="one textLeft">
+                    <div class="bigBig text1 ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s">亲爱的，</div>
+                    <div class="midBig text2 ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s">2017你还没有在益拍</div>
+                    <div class="midBig text2 ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s">上传过哦</div>
+                    <div class="bigBig text3 ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s">不过没关系，</div>
+                    <div class="midBig text4 ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s">2018益拍期待着你的</div>
+                    <div class="midBig text4 ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.1s">精彩~</div>
+                </div>
+                <div class="staror">
+                    <img class="ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/star-or@3x.png" alt="">
+                </div>
+                <div class="blue">
+                    <img class="ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/star-blue@3x.png" alt="">
+                </div>
+                <img class="house house1 ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/house@2x.png" alt="">
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img class="ani" swiper-animate-effect="pulse" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="littlestar">
+                    <img src="activity/img/littlestar@3x.png" alt="">
+                </div>
+                <div class="littlestar1">
+                    <img src="activity/img/littlestar1@3x.png" alt="">
+                </div>
+                <div class="littlestar2">
+                    <img src="activity/img/littlestar2@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- one -->
+            <div class="slide-1 swiper-slide background1">
+                <div class="one">
+                    <div class="join">
+                        <div id="joinTime" class="textYellow textLeft ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0s"></div>
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">我加入了益拍,成为了一</div>
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">名城市的守护者</div>
+                        <div class="textLeft ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">距今已有 <span id="joinNum" class="textYellow textBig"></span> <span class="textYellow">天</span></div>
+                    </div>
+                    <div class="nicheng ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.1s" swiper-animate-delay="0.2s">
+                    </div>
+                </div>
+                <div class="describe ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.1s" swiper-animate-delay="0.3s">
+                    <div>这大概是最特别的一天</div>
+                    <div>与君初相识， 犹如故人归</div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1.1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="star1">
+                    <img class="ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/icon-star1@3x.png" alt="">
+                </div>
+                <div class="star2">
+                    <img class="ani" swiper-animate-effect="slideInDown" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/icon-star2@3x.png" alt="">
+                </div>
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- two -->
+            <div class="slide-2 swiper-slide background1">
+                <div class="one">
+                    <div class="report">
+                        <div id="reportTime" class="textYellow textLeft ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s"></div>
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">还记得第一次上报的</div>
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">案件吗？</div>
+                    </div>
+                    <div class="case ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.1s" swiper-animate-delay="0.2s">
+                        <img class="caseImg" src="" alt="">
+                        <div class="textLeft addrDescribe">
+                            <div class="pic">
+                                <img src="activity/img/icon-cond@3x.png" alt="">
+                            </div>
+                            <div id="addrDescribe" class="text textYellow"></div>
+                        </div>
+                        <div class="textLeft address">
+                            <div class="pic">
+                                <img src="activity/img/icon-local@3x.png" alt="">
+                            </div>
+                            <div id="address" class="text textYellow"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="describe ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.1s" swiper-animate-delay="0.3s">
+                    <div>勇敢地迈出第一步</div>
+                    <div>一切都比你想象的更容易</div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="twoStar1">
+                    <img class="ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/icon-star1@3x.png" alt="">
+                </div>
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- three -->
+            <div class="slide-3 swiper-slide background1">
+                <div class="one">
+                    <div class="report">
+                        <div id="grantTime" class="textYellow textLeft ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s"></div>
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">通过益拍赚到了</div>
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">第一桶金</div>
+                    </div>
+                    <div class="case ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1.1s" swiper-animate-delay="0.5s">
+                        <img class="awardImg" src="activity/img/red@3x.png" alt="">
+                        <div class="textYellow number">￥<span id="grantAward"></span></div>
+                    </div>
+                </div>
+                <div class="describe ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.1s" swiper-animate-delay="0.6s">
+                    <div>多多使用益拍</div>
+                    <div>距离一个亿的小目标会更近</div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="threeStar1">
+                    <img class="ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/icon-star1@3x.png" alt="">
+                </div>
+                <div class="starRed">
+                    <img class="ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/star-red@3x.png" alt="">
+                </div>
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- four -->
+            <div class="slide-4 swiper-slide background1">
+                <div class="one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="0s">
+                    <div class="report1">
+                        <div class="textLeft textBig" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">您的成绩超过</div>
+                        <div class="textLeft textBig" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s"><span class="textYellow"><big id="score"></big><small>%</small></span>的小伙伴</div>
+                    </div>
+                    <div class="total ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">
+                        <div class="totalCase ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">
+                            <div class="resultTitle">上报案件</div>
+                            <div class="resultNum textYellow"><big class="textBig" id="uploadNum">1183</big>件</div>
+                        </div>
+                        <div class="totalTask ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">
+                            <div class="resultTitle">完成任务</div>
+                            <div class="resultNum textYellow"><big class="textBig" id="taskNum">183</big>个</div>
+                        </div>
+                        <div class="totalAward ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">
+                            <div class="resultTitle">领取奖金</div>
+                            <div class="resultNum textYellow"><big class="textBig" id="awardNum">6183</big>元</div>
+                        </div>
+                    </div>
+                    <div id="uploadImgs"></div>
+                </div>
+                <div class="describe  ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.1s" swiper-animate-delay="0.6s" id="comment"></div>
+                <!-- <div id="uploadImgs"></div> -->
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0.1s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- five -->
+            <div class="slide-5 swiper-slide background1">
+                <div class="one" style="z-index:10;">
+                    <div class="report2">
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">上报最多类型的是</div>
+                        <div class="textLeft textBig textYellow ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">
+                            <span id="uploadType">设施破损</span>
+                        </div>
+                    </div>
+                    <div class="echartTotal ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="0.3s" id="myChart">
+                    </div>
+                </div>
+                <div class="describe ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.1s" swiper-animate-delay="0.6s">
+                    <div>坚持，是最浅显的道理，也是最难得的事情</div>
+                    <div>谢谢一直坚持的你。</div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- six -->
+            <div class="slide-6 swiper-slide background1">
+                <div class="one">
+                    <div class="report1 ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.1s" swiper-animate-delay="0.1s" id="goWalk">
+                    </div>
+                    <div class="walkImg ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.1s" swiper-animate-delay="0.1s"></div>
+                </div>
+                <div class="describe ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.1s" swiper-animate-delay="0.3s">
+                    <div>你的一小步</div>
+                    <div>却是美好城市建设道路上的一大步</div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- seven -->
+            <div class="slide-7 swiper-slide background2">
+                <div class="one">
+                    <div class="report2">
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">恭喜您获得了</div>
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s"><span class="textYellow" id="honor">环保卫士</span>称号</div>
+                    </div>
+                    <div class="honorImg ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1.1s" swiper-animate-delay="0.5s"></div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="bingo">
+                    <img class="" src="activity/img/icon-bingo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- eight -->
+            <div class="slide-8 swiper-slide background1">
+                <!-- <img class="ani background" src="activity/img/bg1@3x.png" alt=""> -->
+                <div class="one">
+                    <div class="report2">
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">2017 您辛苦了</div>
+                        <div class="textLeft yearEnd ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">一份益拍为您准备的<span class="textYellow">年终奖</span>等待开启</div>
+                    </div>
+            
+                   <div class="open ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1.1s" swiper-animate-delay="0.8s" id="openRed">
+                   		<!-- 领取红包loading -->
+						<div class="spinner">
+							<div class="bounce1"></div>
+							<div class="bounce2"></div>
+							<div class="bounce3"></div>
+						</div>
+                   		<a href="javascript:;" id="openA" style="height:100%;display:block;"><img src="activity/img/redpacket-off@3x.png" alt=""></a>
+                    </div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+            </div>
+
+            <!-- nine -->
+            <div class="slide-9 swiper-slide background1" id="redPacket">
+                <div class="last">
+                    <div class="report">
+                        <div class="textLeft textBig ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s">恭喜您获得</div>
+                        <div class="textLeft textYellow jiangjin ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.1s"><span class="textBig money">21.7</span>元</div>
+                        <div class="textLeft grantTime ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1.3s" swiper-animate-delay="0.3s">年终奖将会在2018年2月24日发放到益拍账户</div>
+                    </div>
+                    <div class="opened">
+                        <p swiper-animate-effect="bounceAuto" swiper-animate-duration="1.1s" swiper-animate-delay="0.1s" class="wallet-prtty-img ani">
+                            <img src="activity/img/effect@3x.png">
+                        </p>
+                        <div class="openedAward textYellow"><span class="money textBig"></span> 元</div>
+                        <div class="btn1">
+                            <a href="#shareWX" id="slideShare" style="display:block;height:100%;">
+                                <img src="activity/img/button-vote@3x.png">
+                            </a>
+                        </div>
+                        <div class="btn2" id="btnRank">
+                            <a class="rank" id='ranks' href="" style="display:block;height:100%;">
+							<img src="activity/img/button-list12@3x.png">
+							</a>
+                        </div>
+                    </div>
+                </div>
+                <img class="house ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0s" src="activity/img/bg-house@3x.png" alt="">
+                <div class="music">
+                    <img class="music" src="activity/img/icon-music@3x.png" alt="">
+                </div>
+                <div class="logo">
+                    <img src="activity/img/icon-logo@3x.png" alt="">
+                </div>
+                <div class="textYellow rule">
+                    <div class="rule2">
+                        <a href="/${msUrl}/annual/rule/2017">
+                            << 查看活动规则>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+
+</html>
